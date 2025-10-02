@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bộ sưu tập ảnh Siêu Quậy</title>
+  <title>Bộ sưu tập ảnh Handy Nọng</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -46,4 +46,76 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
       opacity: 0;
       transform: translateY(40px) scale(0.9);
-      transition: all 0
+      transition: all 0.8s ease-out;
+    }
+
+    .gallery img.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      filter: brightness(1.08);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 40px auto 0;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      background: #8B5E3C;
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .back-link:hover {
+      background: #a6744c;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive cho điện thoại */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📷 Bộ sưu tập ảnh của Handy Nọng</h1>
+  <div class="gallery">
+    <img src="11.jpg" alt="">
+    <img src="1.jpg" alt="">
+    <img src="2.jpg" alt="">
+    <img src="3.jpg" alt="">
+    <img src="4.jpg" alt="">
+    <img src="5.jpg" alt="">
+  </div>
+  <a class="back-link" href="index.html">← Quay về trang chính</a>
+
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('show');
+          }, index * 150);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    images.forEach(img => observer.observe(img));
+  </script>
+</body>
+
+</html>
