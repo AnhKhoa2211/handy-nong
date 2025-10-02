@@ -18,20 +18,22 @@
             text-align: center;
             color: #8B5E3C;
             margin-bottom: 30px;
+            animation: fadeDown 1s ease;
         }
 
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 0;
+            padding: 20px 0;
         }
 
+        /* Thanh dọc */
         .timeline::after {
             content: '';
             position: absolute;
-            width: 6px;
-            background: #8B5E3C;
+            width: 4px;
+            background: #d9b99b;
             top: 0;
             bottom: 0;
             left: 50%;
@@ -43,6 +45,14 @@
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .entry.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .entry.left {
@@ -58,37 +68,40 @@
         .entry::before {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 15px;
+            width: 18px;
+            height: 18px;
+            top: 20px;
             background: #fff;
-            border: 3px solid #8B5E3C;
+            border: 4px solid #8B5E3C;
             border-radius: 50%;
             z-index: 1;
         }
 
         .entry.left::before {
-            right: -10px;
+            right: -9px;
         }
 
         .entry.right::before {
-            left: -10px;
+            left: -9px;
         }
 
         .entry-content {
             padding: 15px;
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            animation: popUp 1s ease;
         }
 
         .entry-content h2 {
             margin: 0 0 10px;
             color: #8B5E3C;
+            font-size: 1.1rem;
         }
 
         .entry-content p {
             margin: 0;
+            font-size: 0.95rem;
         }
 
         .back-link {
@@ -98,6 +111,54 @@
             text-decoration: none;
             color: #8B5E3C;
             font-weight: 600;
+        }
+
+        /* Hiệu ứng */
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popUp {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive cho điện thoại */
+        @media(max-width: 768px) {
+            .timeline::after {
+                left: 20px;
+            }
+
+            .entry {
+                width: 100%;
+                padding-left: 50px;
+                text-align: left;
+            }
+
+            .entry.left,
+            .entry.right {
+                left: 0;
+            }
+
+            .entry.left::before,
+            .entry.right::before {
+                left: 12px;
+            }
         }
     </style>
 </head>
@@ -110,7 +171,7 @@
         <div class="entry left">
             <div class="entry-content">
                 <h2>20/04/2025</h2>
-                <p>🎉Handy Nọng chào đời.</p>
+                <p>🎉 Handy Nọng chào đời.</p>
             </div>
         </div>
 
@@ -135,10 +196,24 @@
             </div>
         </div>
 
-        <!-- Có thể thêm nhiều entry khác sau này -->
     </div>
 
     <a class="back-link" href="index.html">← Quay về trang chính</a>
+
+    <script>
+        // Intersection Observer để hiện entry khi scroll tới
+        const entries = document.querySelectorAll('.entry');
+        const observer = new IntersectionObserver((items) => {
+            items.forEach(item => {
+                if (item.isIntersecting) {
+                    item.target.classList.add('show');
+                    observer.unobserve(item.target); // hiện 1 lần thôi
+                }
+            });
+        }, { threshold: 0.2 });
+
+        entries.forEach(entry => observer.observe(entry));
+    </script>
 </body>
 
 </html>
