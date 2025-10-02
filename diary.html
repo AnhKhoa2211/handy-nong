@@ -24,6 +24,7 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
+            padding: 40px 0;
         }
 
         .timeline::after {
@@ -34,21 +35,24 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -3px;
+            transform: translateX(-50%);
         }
 
         .entry {
             padding: 15px 30px;
             position: relative;
             width: 50%;
+            box-sizing: border-box;
         }
 
         .entry.left {
             left: 0;
+            text-align: right;
         }
 
         .entry.right {
             left: 50%;
+            text-align: left;
         }
 
         .entry::before {
@@ -56,12 +60,15 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            right: -10px;
             top: 15px;
             background: #fff;
             border: 3px solid #8B5E3C;
             border-radius: 50%;
             z-index: 1;
+        }
+
+        .entry.left::before {
+            right: -10px;
         }
 
         .entry.right::before {
@@ -103,7 +110,7 @@
         <div class="entry left">
             <div class="entry-content">
                 <h2>20/04/2025</h2>
-                <p>🎉 Ngày chào đời – Handy Nọng chính thức xuất hiện.</p>
+                <p>🎉Handy Nọng chào đời.</p>
             </div>
         </div>
 
