@@ -31,11 +31,22 @@
       width: 100%;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s;
+      opacity: 0;
+      transform: translateY(40px);
+      /* ban đầu trượt xuống */
+      transition: all 0.6s ease-out;
     }
 
+    /* Khi hiện ra */
+    .gallery img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hiệu ứng nổi khi hover */
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
     }
 
     .back-link {
@@ -61,6 +72,24 @@
     <!-- Thêm ảnh khác vào đây -->
   </div>
   <a class="back-link" href="index.html">← Quay về trang chính</a>
+
+  <script>
+    // Dùng Intersection Observer để theo dõi ảnh
+    const images = document.querySelectorAll('.gallery img');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show'); // thêm class để hiện
+          observer.unobserve(entry.target); // chỉ hiện 1 lần
+        }
+      });
+    }, { threshold: 0.2 });
+
+    images.forEach(img => {
+      observer.observe(img);
+    });
+  </script>
 </body>
 
 </html>
