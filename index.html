@@ -11,12 +11,9 @@
     <link rel="stylesheet" href="./WEBONLINE/THUVIEN/fontawesome-free-7.0.1-web/css/all.css">
     <style>
         :root {
-            --primary: #8B5E3C;
-            /* Nâu ấm */
-            --secondary: #fef6f0;
-            /* Nền kem */
-            --accent: #d9b99b;
-            /* Be nhạt */
+            --primary: #8B5E3C; /* Nâu ấm */
+            --secondary: #fef6f0; /* Nền kem */
+            --accent: #d9b99b; /* Be nhạt */
         }
 
         * {
@@ -129,7 +126,7 @@
             transform: translateY(-2px);
         }
 
-        /* Nút tròn cho Zalo và Facebook */
+        /* Nút tròn */
         .btn.circle {
             width: 40px;
             height: 40px;
@@ -138,7 +135,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .social-row {
@@ -147,6 +144,12 @@
             align-items: center;
             gap: 14px;
             margin-top: 12px;
+        }
+
+        .zalo-text {
+            font-size: 0.7rem; 
+            font-weight: 600;
+            color: white;
         }
 
         @keyframes fadeIn {
@@ -190,7 +193,6 @@
     <div class="card">
         <!-- Ảnh đầu trang -->
         <div class="header">
-            <!-- Thay link ảnh thật của Handy Nọng -->
             <img src="z7071153317832_bfeb22c3b1cd3e8745d9417ce63ac100.jpg" alt="Handy Nọng" class="avatar">
         </div>
 
@@ -207,15 +209,11 @@
 
             <div class="info">
                 <h2>Thông tin liên hệ</h2>
-                <div class="info-item"><i class="fa-solid fa-user"></i><span>Ông Ba: <!-- Tên chủ --> Bi Nguyễn </span>
-                </div>
-                <div class="info-item"><i class="fa-solid fa-house"></i><span>Địa chỉ: <!-- Địa chỉ -->118 Vĩnh Hội, Q4
-                    </span></div>
+                <div class="info-item"><i class="fa-solid fa-user"></i><span>Ông Ba: Bi Nguyễn</span></div>
+                <div class="info-item"><i class="fa-solid fa-house"></i><span>Địa chỉ: 118 Vĩnh Hội, Q4</span></div>
 
                 <h2>Ghi chú</h2>
-                <div class="info-item"><i class="fa-solid fa-paw"></i><span><!-- Bé thích ăn gì, tính cách... --> Siêu
-                        quậy, thích ăn thịt gà, phô mai
-                    </span></div>
+                <div class="info-item"><i class="fa-solid fa-paw"></i><span>Siêu quậy, thích ăn thịt gà, phô mai</span></div>
             </div>
 
             <!-- Nút liên kết nhanh -->
@@ -225,6 +223,7 @@
             <a href="tel:0906373649" class="btn">
                 <i class="fa-solid fa-phone"></i> Gọi 0906373649
             </a>
+            
             <div class="social-row">
                 <a href="https://www.facebook.com/binguyen2125" target="_blank" class="btn circle">
                     <i class="fa-brands fa-facebook"></i>
@@ -233,11 +232,10 @@
                     <i class="fa-brands fa-facebook"></i>
                 </a>
                 <a href="https://zalo.me/0796863564" target="_blank" class="btn circle">
-                    <i class="fa-solid fa-z" style="width:22px;height:22px;"></i>
-
+                    <span class="zalo-text">Zalo</span>
                 </a>
                 <a href="https://zalo.me/0906373649" target="_blank" class="btn circle">
-                    <p style="width:18px;height:18px;"> Zalo </p>
+                    <span class="zalo-text">Zalo</span>
                 </a>
             </div>
         </div>
@@ -245,6 +243,4 @@
 
 </body>
 
-
 </html>
-
