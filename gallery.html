@@ -73,24 +73,9 @@
   </div>
   <a class="back-link" href="index.html">← Quay về trang chính</a>
 
-  <script>
-    // Dùng Intersection Observer để theo dõi ảnh
-    const images = document.querySelectorAll('.gallery img');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show'); // thêm class để hiện
-          observer.unobserve(entry.target); // chỉ hiện 1 lần
-        }
-      });
-    }, { threshold: 0.2 });
-
-    images.forEach(img => {
-      observer.observe(img);
-    });
-  </script>
 </body>
 
 
 </html>
+
